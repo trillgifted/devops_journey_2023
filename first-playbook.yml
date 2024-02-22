@@ -1,0 +1,21 @@
+---
+- name: Install and Start nginx
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started
+
+# --- indicates its a yml file
+# become: true make you a root user, to run the install  
+#-----------OR(under tasks->name->)-----------
+#(tab under name->)shell: apt install nginx
+#shell: systemctl start nginx
+#--------------------------------------------
